@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vintage Conjugation — Lisbon, Portugal</title>
+<meta name="description" content="Classic chauffeur services, vintage vehicles and curated imports. Based in Lisbon, Portugal." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8973A;
+    --gold-light: #D4B86A;
+    --gold-pale: #F5EDD6;
+    --cream: #FAF7F2;
+    --ivory: #F2EDE4;
+    --dark: #1A1713;
+    --dark-mid: #2E2A24;
+    --dark-soft: #4A4540;
+    --text-muted: #7A746C;
+    --border: rgba(184,151,58,0.25);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(26,23,19,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,151,58,0.2);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: #fff; }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .lang-toggle {
+    display: flex; gap: 0.5rem; align-items: center;
+  }
+  .lang-btn {
+    background: none; border: 1px solid rgba(184,151,58,0.4);
+    color: rgba(255,255,255,0.6);
+    font-family: var(--font-body);
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    padding: 0.3rem 0.65rem; cursor: pointer; transition: all 0.2s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: var(--gold); color: var(--dark); border-color: var(--gold);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(160deg, rgba(26,23,19,0.55) 0%, rgba(26,23,19,0.85) 60%, rgba(26,23,19,0.97) 100%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(184,151,58,0.03) 0px,
+        rgba(184,151,58,0.03) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+  }
+
+  /* Decorative car silhouette line-art overlay */
+  .hero-ornament {
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    width: 520px; opacity: 0.07;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 3rem 5rem;
+    max-width: 780px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 36px; height: 1px; background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1.25rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.25rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.9rem 2.25rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2rem; right: 3rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .hero-scroll::after {
+    content: ''; display: block;
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--gold);
+    padding: 0.9rem 3rem;
+    display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+  }
+  .strip-item {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--dark); font-weight: 500;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .strip-dot { width: 4px; height: 4px; background: var(--dark-mid); border-radius: 50%; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── SERVICES ── */
+  .services { background: var(--ivory); }
+
+  .services-intro {
+    max-width: 560px;
+    margin-bottom: 4rem;
+  }
+  .services-intro p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--ivory);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 2px; height: 0;
+    background: var(--gold);
+    transition: height 0.35s ease;
+  }
+  .service-card:hover { background: var(--cream); }
+  .service-card:hover::before { height: 100%; }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(184,151,58,0.18);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .service-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ── ABOUT ── */
+  .about {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    color: #fff;
+  }
+
+  .about .section-title { color: #fff; }
+  .about .section-title em { color: var(--gold-light); }
+
+  .about-text p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.93rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .about-details {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+
+  .detail-item label {
+    display: block;
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .detail-item span {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-card {
+    background: var(--dark-mid);
+    border: 1px solid rgba(184,151,58,0.2);
+    padding: 3rem 2.5rem;
+  }
+  .about-card-num {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+  }
+  .about-card-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 2.5rem;
+  }
+  .about-card-tagline {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+    border-top: 1px solid rgba(184,151,58,0.2);
+    padding-top: 1.5rem;
+  }
+
+  /* ── FLEET PREVIEW ── */
+  .fleet { background: var(--cream); }
+
+  .fleet-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .fleet-item {
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .fleet-item:hover { border-color: var(--gold); }
+
+  .fleet-item-icon {
+    width: 48px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .fleet-item-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .fleet-item-detail {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .fleet-item-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--border);
+    color: var(--gold);
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--ivory);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+    max-width: 400px;
+  }
+
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; gap: 1rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-list li:first-child { border-top: 1px solid var(--border); }
+  .contact-list label {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); min-width: 80px; padding-top: 2px;
+  }
+  .contact-list span {
+    font-size: 0.9rem; color: var(--dark-soft);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--dark);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: var(--text-muted); }
+
+  .contact-form .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+
+  .contact-form textarea { min-height: 130px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+    border-top: 1px solid rgba(184,151,58,0.15);
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+  }
+  .footer-logo span { font-style: italic; color: rgba(255,255,255,0.5); }
+
+  .footer-text {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── DIVIDER ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    font-size: 0.7rem;
+    margin: 2rem 0;
+    opacity: 0.5;
+  }
+
+  /* ── LANG SWITCHING ── */
+  [data-lang="pt"] { display: none; }
+  body.lang-pt [data-lang="en"] { display: none; }
+  body.lang-pt [data-lang="pt"] { display: block; }
+  body.lang-pt span[data-lang="pt"] { display: inline; }
+  body.lang-pt span[data-lang="en"] { display: none; }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero-content { padding: 0 1.5rem 4rem; }
+    .about, .contact { grid-template-columns: 1fr; gap: 3rem; }
+    .fleet-grid { grid-template-columns: 1fr; }
+    .strip { gap: 1.5rem; padding: 0.9rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Vintage <span>Conjugation</span></a>
+  <ul class="nav-links">
+    <li><a href="#services" data-lang="en">Services</a><a href="#services" data-lang="pt">Serviços</a></li>
+    <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="pt">Sobre Nós</a></li>
+    <li><a href="#fleet" data-lang="en">Fleet</a><a href="#fleet" data-lang="pt">Frota</a></li>
+    <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="pt">Contacto</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- SVG car silhouette -->
+  <svg class="hero-ornament" viewBox="0 0 520 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M40 140 Q80 100 160 85 Q220 72 280 70 Q340 68 390 80 L440 90 L470 110 L480 140 Z" stroke="white" stroke-width="1.5" fill="none"/>
+    <path d="M160 85 Q180 50 230 45 Q270 40 310 48 Q350 55 390 80" stroke="white" stroke-width="1.5" fill="none"/>
+    <circle cx="120" cy="148" r="28" stroke="white" stroke-width="1.5" fill="none"/>
+    <circle cx="120" cy="148" r="16" stroke="white" stroke-width="1" fill="none"/>
+    <circle cx="390" cy="148" r="28" stroke="white" stroke-width="1.5" fill="none"/>
+    <circle cx="390" cy="148" r="16" stroke="white" stroke-width="1" fill="none"/>
+    <line x1="40" y1="140" x2="480" y2="140" stroke="white" stroke-width="0.75"/>
+    <path d="M0 155 L520 155" stroke="white" stroke-width="0.5" opacity="0.4"/>
+    <path d="M470 110 L490 112 L500 130 L480 140" stroke="white" stroke-width="1.5" fill="none"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span data-lang="en">Lisbon · Est. 2023</span>
+      <span data-lang="pt">Lisboa · Est. 2023</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span data-lang="en">Where <em>elegance</em><br>meets the road</span>
+      <span data-lang="pt">Onde a <em>elegância</em><br>encontra a estrada</span>
+    </h1>
+
+    <p class="hero-sub">
+      <span data-lang="en">Premium classic chauffeur services and curated vintage vehicles. Serving discerning clients across Portugal and Europe.</span>
+      <span data-lang="pt">Serviços de motorista clássico de luxo e veículos vintage selecionados. Ao serviço de clientes exigentes em Portugal e na Europa.</span>
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#services" class="btn-primary">
+        <span data-lang="en">Explore Services</span>
+        <span data-lang="pt">Ver Serviços</span>
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span data-lang="en">Get in Touch</span>
+        <span data-lang="pt">Contactar</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span data-lang="en">Scroll</span>
+    <span data-lang="pt">Rolar</span>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <span class="strip-dot"></span>
+    <span data-lang="en">Classic Chauffeur</span>
+    <span data-lang="pt">Motorista Clássico</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-dot"></span>
+    <span data-lang="en">Vintage Fleet</span>
+    <span data-lang="pt">Frota Vintage</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-dot"></span>
+    <span data-lang="en">Import &amp; Export</span>
+    <span data-lang="pt">Importação &amp; Exportação</span>
+  </div>
+  <div class="strip-item">
+    <span class="strip-dot"></span>
+    <span data-lang="en">Lisbon · Portugal</span>
+    <span data-lang="pt">Lisboa · Portugal</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services fade-in" id="services">
+  <div class="services-intro">
+    <div class="section-label">
+      <span data-lang="en">What We Do</span>
+      <span data-lang="pt">O Que Fazemos</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Services of <em>distinction</em></span>
+      <span data-lang="pt">Serviços de <em>distinção</em></span>
+    </h2>
+    <p>
+      <span data-lang="en">From private chauffeur journeys in classic automobiles to curated import and export services — each engagement is tailored to the highest standard.</span>
+      <span data-lang="pt">Desde viagens privadas em automóveis clássicos até serviços de importação e exportação selecionados — cada serviço é adaptado ao mais alto padrão.</span>
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">
+        <span data-lang="en">Classic Chauffeur</span>
+        <span data-lang="pt">Motorista Clássico</span>
+      </div>
+      <p class="service-desc">
+        <span data-lang="en">Passenger transport on demand in vintage and classic vehicles with a professional driver. Weddings, events, airport transfers and private hire across Portugal.</span>
+        <span data-lang="pt">Transporte de passageiros a pedido em veículos vintage e clássicos com condutor profissional. Casamentos, eventos, transfers aeroporto e aluguer privado em Portugal.</span>
+      </p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">
+        <span data-lang="en">Vintage Fleet Showcase</span>
+        <span data-lang="pt">Exposição de Frota Vintage</span>
+      </div>
+      <p class="service-desc">
+        <span data-lang="en">A curated collection of classic automobiles available for viewing, private events, film productions and exhibition. Each vehicle is maintained to concours condition.</span>
+        <span data-lang="pt">Uma coleção selecionada de automóveis clássicos disponíveis para visualização, eventos privados, produções cinematográficas e exposição.</span>
+      </p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">
+        <span data-lang="en">Import &amp; Export</span>
+        <span data-lang="pt">Importação &amp; Exportação</span>
+      </div>
+      <p class="service-desc">
+        <span data-lang="en">Specialist import and export services for vintage vehicles and select goods across Europe and international markets. Fully licensed and compliant with Portuguese customs regulations.</span>
+        <span data-lang="pt">Serviços especializados de importação e exportação de veículos vintage e bens selecionados na Europa e mercados internacionais.</span>
+      </p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">
+        <span data-lang="en">Curated Retail</span>
+        <span data-lang="pt">Comércio Especializado</span>
+      </div>
+      <p class="service-desc">
+        <span data-lang="en">Select retail offerings including vintage accessories, automotive memorabilia and curated goods. Available online and by appointment at our Lisbon premises.</span>
+        <span data-lang="pt">Artigos de retalho selecionados incluindo acessórios vintage, memorabilia automóvel e produtos especializados. Disponível online e por marcação em Lisboa.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about fade-in" id="about">
+  <div class="about-text">
+    <div class="section-label">
+      <span data-lang="en">Our Story</span>
+      <span data-lang="pt">A Nossa História</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Born from a love of <em>timeless</em> craft</span>
+      <span data-lang="pt">Nascida do amor pela arte <em>atemporal</em></span>
+    </h2>
+    <p>
+      <span data-lang="en">Vintage Conjugation was established in Lisbon in December 2023 with a singular vision: to bring the elegance of classic automobiles and curated vintage culture to a new generation of European clientele.</span>
+      <span data-lang="pt">A Vintage Conjugation foi fundada em Lisboa em dezembro de 2023 com uma visão singular: trazer a elegância dos automóveis clássicos e a cultura vintage a uma nova geração de clientes europeus.</span>
+    </p>
+    <p>
+      <span data-lang="en">We operate at the intersection of heritage and modernity — honouring the craftsmanship of the past while delivering service standards that meet the expectations of today.</span>
+      <span data-lang="pt">Operamos na interseção entre o património e a modernidade — honrando o artesanato do passado enquanto prestamos padrões de serviço que correspondem às expectativas de hoje.</span>
+    </p>
+
+    <div class="about-details">
+      <div class="detail-item">
+        <label><span data-lang="en">Established</span><span data-lang="pt">Fundada</span></label>
+        <span>December 2023</span>
+      </div>
+      <div class="detail-item">
+        <label><span data-lang="en">Location</span><span data-lang="pt">Localização</span></label>
+        <span>Lisbon, Portugal</span>
+      </div>
+      <div class="detail-item">
+        <label><span data-lang="en">Registration</span><span data-lang="pt">Registo</span></label>
+        <span>NIF 517916347</span>
+      </div>
+      <div class="detail-item">
+        <label><span data-lang="en">Legal Form</span><span data-lang="pt">Forma Jurídica</span></label>
+        <span>Lda (Portugal)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-visual">
+    <div class="about-card">
+      <div class="about-card-num">2023</div>
+      <div class="about-card-label">
+        <span data-lang="en">Year Founded · Lisbon</span>
+        <span data-lang="pt">Ano de Fundação · Lisboa</span>
+      </div>
+      <div class="about-card-tagline">
+        <span data-lang="en">"Every journey is a statement of taste."</span>
+        <span data-lang="pt">"Cada viagem é uma declaração de bom gosto."</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet fade-in" id="fleet">
+  <div class="fleet-header">
+    <div>
+      <div class="section-label">
+        <span data-lang="en">Our Fleet</span>
+        <span data-lang="pt">A Nossa Frota</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="en">Vehicles of <em>character</em></span>
+        <span data-lang="pt">Veículos com <em>carácter</em></span>
+      </h2>
+    </div>
+    <a href="#contact" class="btn-primary">
+      <span data-lang="en">Enquire About Fleet</span>
+      <span data-lang="pt">Informações sobre Frota</span>
+    </a>
+  </div>
+
+  <div class="fleet-grid">
+    <div class="fleet-item">
+      <div class="fleet-item-icon"></div>
+      <div class="fleet-item-name">
+        <span data-lang="en">Classic Sedans</span>
+        <span data-lang="pt">Berlinas Clássicas</span>
+      </div>
+      <p class="fleet-item-detail">
+        <span data-lang="en">1950s–1980s European and American classic sedans, immaculately restored for private hire and events.</span>
+        <span data-lang="pt">Berlinas clássicas europeias e americanas dos anos 50–80, restauradas para aluguer privado e eventos.</span>
+      </p>
+      <span class="fleet-item-tag">
+        <span data-lang="en">Available for Hire</span>
+        <span data-lang="pt">Disponível para Aluguer</span>
+      </span>
+    </div>
+
+    <div class="fleet-item">
+      <div class="fleet-item-icon"></div>
+      <div class="fleet-item-name">
+        <span data-lang="en">Convertibles</span>
+        <span data-lang="pt">Descapotáveis</span>
+      </div>
+      <p class="fleet-item-detail">
+        <span data-lang="en">Open-top classics for summer tours, weddings and lifestyle photography along the Portuguese coast and Lisbon hills.</span>
+        <span data-lang="pt">Clássicos descapotáveis para tours de verão, casamentos e fotografia ao longo da costa portuguesa.</span>
+      </p>
+      <span class="fleet-item-tag">
+        <span data-lang="en">Seasonal</span>
+        <span data-lang="pt">Sazonal</span>
+      </span>
+    </div>
+
+    <div class="fleet-item">
+      <div class="fleet-item-icon"></div>
+      <div class="fleet-item-name">
+        <span data-lang="en">Exhibition Pieces</span>
+        <span data-lang="pt">Peças de Exposição</span>
+      </div>
+      <p class="fleet-item-detail">
+        <span data-lang="en">Select vehicles available for museum exhibitions, film and television productions, and corporate display engagements across Europe.</span>
+        <span data-lang="pt">Veículos selecionados para exposições em museus, produções cinematográficas e exposições corporativas na Europa.</span>
+      </p>
+      <span class="fleet-item-tag">
+        <span data-lang="en">By Appointment</span>
+        <span data-lang="pt">Por Marcação</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-in" id="contact">
+  <div class="contact-info">
+    <div class="section-label">
+      <span data-lang="en">Get in Touch</span>
+      <span data-lang="pt">Contacte-nos</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Let's begin your <em>journey</em></span>
+      <span data-lang="pt">Comece a sua <em>viagem</em></span>
+    </h2>
+    <p>
+      <span data-lang="en">For enquiries about chauffeur bookings, fleet hire, import services or any other matter, we welcome your message. We respond within one business day.</span>
+      <span data-lang="pt">Para informações sobre reservas de motorista, aluguer de frota, serviços de importação ou qualquer outro assunto, aguardamos a sua mensagem.</span>
+    </p>
+
+    <ul class="contact-list">
+      <li>
+        <label><span data-lang="en">Location</span><span data-lang="pt">Morada</span></label>
+        <span>Lisbon, Portugal</span>
+      </li>
+      <li>
+        <label>Email</label>
+        <span>info@vintageconjugation.pt</span>
+      </li>
+      <li>
+        <label>NIF</label>
+        <span>517 916 347</span>
+      </li>
+      <li>
+        <label><span data-lang="en">Languages</span><span data-lang="pt">Idiomas</span></label>
+        <span>EN · PT · DE</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-row">
+      <input type="text" placeholder="Name / Nome" />
+      <input type="email" placeholder="Email" />
+    </div>
+    <input type="text" placeholder="Subject / Assunto" />
+    <textarea placeholder="Your message / A sua mensagem"></textarea>
+    <button type="button" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-size:0.78rem;">
+      <span data-lang="en">Send Message</span>
+      <span data-lang="pt">Enviar Mensagem</span>
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Vintage <span>Conjugation</span> — Lda</div>
+  <p class="footer-text">
+    <span data-lang="en">© 2024 Vintage Conjugation Lda · NIF 517916347 · Lisbon, Portugal</span>
+    <span data-lang="pt">© 2024 Vintage Conjugation Lda · NIF 517916347 · Lisboa, Portugal</span>
+  </p>
+  <ul class="footer-links">
+    <li><a href="#services"><span data-lang="en">Services</span><span data-lang="pt">Serviços</span></a></li>
+    <li><a href="#about"><span data-lang="en">About</span><span data-lang="pt">Sobre</span></a></li>
+    <li><a href="#contact"><span data-lang="en">Contact</span><span data-lang="pt">Contacto</span></a></li>
+  </ul>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.body.classList.toggle('lang-pt', lang === 'pt');
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
